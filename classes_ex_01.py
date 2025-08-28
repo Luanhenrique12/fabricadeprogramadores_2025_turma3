@@ -1,22 +1,34 @@
-class marinhos():
-    def __init__(self, especie, tamanho_m, venenoso, profundidade):
+class AnimaisMarinhos:
+    def __init__(self, nome, especie, local, tamanho, idade):
+        self.nome = nome
         self.especie = especie
-        self.tamanho_m = tamanho_m
-        self.venenoso = venenoso
-        self.profundidade = profundidade
-        self.visitas = 0
+        self.local = local
+        self.tamanho = tamanho
+        self.idade = idade
 
-    def mostrar_especie(self):
-        print(f"Espécie: {self.especie}")
+    def nadar(self):
+        return f"{self.nome} está nadando!"
 
-    def mostrar_tamanho(self):
-        print(f"Tamanho: {self.tamanho_m} m")
+    def comer(self):
+        return f"{self.nome} está se alimentando."
 
-    def mostrar_venenoso(self):
-        print(f"É venenoso?: {self.venenoso}")
+    def dormir(self):
+        return f"{self.nome} está dormindo."
 
-    def mostrar_profundidade(self):
-        print(f"Profundidade: {self.profundidade} m")
-    
-    animal = marinhos(10.0, ["azul","branco", "cinza"], "baleias (Principalmente carcaças)", "carcharias" "carcharondon")
-    animal.especie()
+    def som(self):
+        return f"{self.nome} está emitindo um som característico."
+
+    def info(self):
+        return f"Nome: {self.nome}, Espécie: {self.especie}, Habitat: {self.local}"
+
+
+
+
+
+animais = [
+    AnimaisMarinhos("Nemo", "Peixe-palhaço", "Recife", "Pequeno", 2),
+    AnimaisMarinhos("Baleia Azul", "Cetáceo", "Oceano", "Gigante", 80),
+    AnimaisMarinhos("Polvo", "Molusco", "Fundo do mar", "Médio", 5),
+    AnimaisMarinhos("Tubarão", "Cartilaginoso", "Oceano", "Grande", 25),
+    AnimaisMarinhos("Golfinho", "Cetáceo", "Oceano", "Médio", 15)
+]
