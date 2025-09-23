@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fonte sóbria e elegante */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f5f5; /* Cinza bem claro para o fundo */
+  color: #404040; /* Cinza escuro para texto (60% cinza é aproximadamente #666666, mas usei um pouco mais escuro pra melhor contraste) */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Container com fundo branco e sombra leve */
+.container {
+  background-color: #ffffff;
+  max-width: 480px;
+  width: 100%;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Títulos */
+h1 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #4d4d4d; /* Cinza escuro */
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: 'Georgia', serif; /* Fonte serifada para um toque acadêmico */
+}
+
+/* Parágrafo */
+p {
+  color: #666666;
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Formulário com espaçamento */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #666666;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Inputs e Select estilizados */
+input[type="text"],
+input[type="number"],
+select {
+  padding: 14px 16px;
+  border: 1.5px solid #999999;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline-offset: 2px;
+  background-color: #fafafa;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #555555;
+  box-shadow: 0 0 6px rgba(85, 85, 85, 0.3);
+  outline: none;
+  background-color: #fff;
+}
+
+/* Botão com cor cinza escuro e hover mais forte */
+button {
+  padding: 16px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ffffff;
+  background-color: #666666; /* Cinza 60% */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(102, 102, 102, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: #444444;
+  box-shadow: 0 7px 20px rgba(68, 68, 68, 0.6);
+  outline: none;
+}
+
+/* Mensagem */
+#mensagem {
+  margin-top: 28px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  min-height: 24px;
+  color: #2a7a2a; /* Verde positivo */
+  user-select: none;
+}
+
+/* Mensagem de erro (classe dinâmica) */
+#mensagem.error {
+  color: #d93025; /* Vermelho para erro */
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .container {
+    padding: 60px 50px;
+    max-width: 540px;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+}
