@@ -1,23 +1,35 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faculdade Exemplo</title>
-<link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <main class="container">
         <h1>Bem-vindo à Faculdade Exemplo</h1>
         <p>Cadastre-se para começar seus estudos!</p>
 
+        <!-- Formulário de Cadastro -->
         <form id="cadastroForm">
             <label for="usuario">Nome do Aluno:</label>
             <input type="text" id="usuario" name="usuario" required>
 
+            
+
+            <label for="email ">E-mail:</label>
+            <input type="text" id="email" name="email"  required>
+
+
+            <label for="senha ">Senha:</label>
+            <input type="text" id="senha" name="senha"  required>
+
+            <label for="titulo ">Título:</label>
+            <input type="text" id="titulo" name="titulo"  required>
+
             <label for="nota">Nota Inicial:</label>
-            <input type="number" id="nota" name="nota" min="0" max="10" required>
+            <input type="number" id="nota" name="nota" min="0" max="10" height="300px" required>
 
             <label for="curso">Curso:</label>
             <select id="curso" name="curso" required>
@@ -33,6 +45,60 @@
 
         <div id="mensagem"></div>
     </main>
+
+    <!-- Sobre os cursos -->
+    <section class="info">
+        <h2>Nossos Cursos</h2>
+        <p>Na Faculdade Exemplo, você encontra diversas áreas de conhecimento com professores experientes e infraestrutura moderna.</p>
+        <ul>
+            <li><strong>ADS:</strong> Formação tecnológica para o mercado digital.</li>
+            <li><strong>Engenharia Civil:</strong> Desenvolvimento de grandes obras e projetos estruturais.</li>
+            <li><strong>Medicina:</strong> Ensino humanizado e laboratórios de última geração.</li>
+            <li><strong>Direito:</strong> Formação jurídica voltada para a prática e teoria.</li>
+        </ul>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="diferenciais">
+        <h2>Por que escolher a Faculdade Exemplo?</h2>
+        <p>Oferecemos mais do que ensino: oferecemos futuro.</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Professores Qualificados</h3>
+                <p>Doutores e mestres com experiência no mercado.</p>
+            </div>
+            <div class="card">
+                <h3>Infraestrutura Moderna</h3>
+                <p>Laboratórios, bibliotecas e salas equipadas para o melhor aprendizado.</p>
+            </div>
+            <div class="card">
+                <h3>Parcerias Empresariais</h3>
+                <p>Conexão direta com empresas para estágios e empregos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contato">
+        <h2>Entre em Contato</h2>
+        <p>Quer saber mais sobre a nossa faculdade? Fale conosco!</p>
+        <form>
+            <label for="nomeContato">Nome:</label>
+            <input type="text" id="nomeContato" required>
+
+            <label for="emailContato">E-mail:</label>
+            <input type="email" id="emailContato" required>
+
+            <label for="mensagemContato">Mensagem:</label>
+            <textarea id="mensagemContato" rows="4" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Faculdade Exemplo - Projeto Faculdade</p>
+    </footer>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

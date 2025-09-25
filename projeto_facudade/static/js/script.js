@@ -4,11 +4,19 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
     const usuario = document.getElementById('usuario').value;
     const nota = parseFloat(document.getElementById('nota').value);
     const curso = document.getElementById('curso').value;
+    const senha = parseFloat(document.getElementById('senha').value);
+    const titulo = document.getElementById('titulo').value;
+    const email = document.getElementById('email').value;
+    
+
 
     const data = {
         usuario,
         nota,
-        curso
+        curso,
+        senha,
+        titulo, 
+        email
     };
 
     try {

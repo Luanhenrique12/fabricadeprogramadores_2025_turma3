@@ -17,8 +17,12 @@ def criar_novo_usuario_e_nota(novo_usuario: Usuario, nova_nota: Notas):
 
   
     
-
-    db.add(nova_nota)
+    note = Notas(
+        id_usuario= novo_usuario.id, 
+        titulo= nova_nota.titulo,
+        conteudo= nova_nota.conteudo
+        )
+    db.add(note)
     db.commit()
     print(f"Nota '{nova_nota.titulo}' criada para {novo_usuario.nome}.")
 
@@ -33,18 +37,17 @@ def ler_dados():
     else:
         print("Usuario(a) não esncontrado.")
 
-def atualizar_nota(id_nota: int):
+def atualizar_nota(id_nota: int, titulo: str, conteudo: str):
     nota_para_editar = db.query(Notas).filter(Notas.id == id_nota).first()
 
     if nota_para_editar:
-        print(f"Título original: '{nota_para_editar.titulo}'")
-
        
-        nota_para_editar.titulo = "Lista de anotações ATUALIZADA!"
-
+       
+        nota_para_editar.titulo = titulo
+        nota_para_editar.conteudo = conteudo
        
         db.commit()
-        print(f"Título novo: '{nota_para_editar.titulo}'")
+        
     else:
         print("Nota com ID %d não encontrada." % id_nota)
 

@@ -9,7 +9,7 @@ import datetime
 from sqlalchemy import *
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker 
 
-DATABASE_URL = "postgresql://postgres:1234@localhost:5432/postgres"
+DATABASE_URL = 'postgresql://neondb_owner:npg_6lsVT4yNCowk@ep-delicate-sound-acbcrvft-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
 
 engine = create_engine(DATABASE_URL)
 
@@ -20,13 +20,13 @@ Base= declarative_base()
 class Usuario(Base):
     __tablename__ = "usuarios"  
 
-    id = Column(Integer, primary_key=True, index=True)
-    nome = Column(String(100), nullable=False)
-    email = Column(String(255), unique=True, nullable=False)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    nome = Column(String(255), nullable=False)
+    email = Column(String(255), unique=False)
     senha_hash = Column(String(255), nullable=False)
     criado_em = Column(DateTime(timezone=True), default=datetime.datetime.now)
 
-    notas = relationship("Nota", back_populates="autor")
+    notas = relationship("Notas", back_populates="autor")
 
 class Notas(Base):
     __tablename__ = "notas" 
@@ -38,8 +38,7 @@ class Notas(Base):
     criado_em= Column(DateTime(timezone=True),default = datetime.datetime.now)
     modificado_em = Column(DateTime(timezone=True), default=datetime.datetime.now)
    
-
-    autor = relationship("Usuario", back_populates="Notas")
+    autor = relationship("Usuario", back_populates="notas")
 
 if __name__ == "__main__":
     Base.metadata.create_all(bind=engine)
