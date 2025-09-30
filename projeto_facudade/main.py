@@ -1,4 +1,4 @@
-from tabelas import senssionlocal, Usuario, Notas
+from tabelas import senssionlocal, Usuario, Notas, joinedload
 
 
 
@@ -27,15 +27,28 @@ def criar_novo_usuario_e_nota(novo_usuario: Usuario, nova_nota: Notas):
     print(f"Nota '{nova_nota.titulo}' criada para {novo_usuario.nome}.")
 
 def ler_dados():
-    user =  db.query(Usuario).all()
+    users =  db.query(Usuario).options(joinedload(Usuario.notas)).all()
 
-    if user:
-        
-        for notas in user.notas:
-            print(f" -Título: {notas.titulo} (ID: {Notas.id} ")
-        return user
-    else:
-        print("Usuario(a) não esncontrado.")
+    resultado = []
+    for u  in users: 
+        notas=[]
+        for n in u.notas:
+                notas.append({
+                    "id": n.id,
+                    "titulo": n.titulo,
+                    "conteudo": n.conteudo,
+                    "criado_em": n.criado_em
+                
+            })
+        resultado.append({
+            "id": u.id,
+            "usuario": u.nome,
+            "email": u.email,
+            "criado_em": u.criado_em,
+            "notas": notas
+        })
+
+    return resultado
 
 def atualizar_nota(id_nota: int, titulo: str, conteudo: str):
     nota_para_editar = db.query(Notas).filter(Notas.id == id_nota).first()

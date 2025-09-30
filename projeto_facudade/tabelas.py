@@ -7,10 +7,14 @@
 
 import datetime
 from sqlalchemy import *
-from sqlalchemy.orm import declarative_base, relationship, sessionmaker 
+from sqlalchemy.orm import declarative_base, relationship, sessionmaker, joinedload
+from dotenv import load_dotenv, dotenv_values
 
-DATABASE_URL = 'postgresql://neondb_owner:npg_6lsVT4yNCowk@ep-delicate-sound-acbcrvft-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+load_dotenv()
 
+variaveis_de_ambiente = dotenv_values()
+
+DATABASE_URL = variaveis_de_ambiente['DATABASE_URL']
 engine = create_engine(DATABASE_URL)
 
 senssionlocal = sessionmaker(autocommit=False , autoflush=False, bind=engine)
