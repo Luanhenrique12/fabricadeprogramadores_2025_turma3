@@ -1,0 +1,55 @@
+1 ordenadores maior ou menor
+igualdade == ou !=
+associados is, in, is note, not in 
+
+
+'''not executa primeiro'''
+(a or b) and (not e)
+
+
+
+ordem dos operadores: 
+1 ()
+2 ** 
+3 /
+
+RANGE tudo oq ta no alcance comeca do 1 e vai ate o 101 ou seja ele é == 0 100
+
+
+oq é json? passa informacao 
+quais sao os tipos de dados?
+str ponto flutuante, permite null > nulos, outros json, boleano, listas
+
+
+oq é csv: um Exel? Uma planilha! "valores separados por "virgulas, ponto e virgula,
+Oq é uma api? meio de troca de msg
+
+
+GEt : para visualizar o objeto
+put para atualizar completamente
+post para inserir 
+patch para atualizar em parte o objeto 
+deleten para deletar
+
+
+
+codigos de status http:
+
+200 ok 
+201 esta adicionando ou criado
+400 colicitacao invalido/ invalida
+404 recurso n encontrado 
+
+
+"200 ao 300"
+ok
+
+500 ao 600 sobre servidor ou banco de dados
+
+
+
+
+qual  objetivo da biblioteca requests verifica um obijeto
+
+
+oq é requests.post : posta um objeto ou cria

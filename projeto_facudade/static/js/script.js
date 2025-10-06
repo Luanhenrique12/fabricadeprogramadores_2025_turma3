@@ -1,10 +1,10 @@
-document.getElementById('cadastroForm').addEventListener('submit', async function (e) {
+document.getElementById('cadastroForm')?.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const usuario = document.getElementById('usuario').value;
     const nota = parseFloat(document.getElementById('nota').value);
     const curso = document.getElementById('curso').value;
-    const senha = document.getElementById('senha').value; 
+    const senha = document.getElementById('senha').value;
     const titulo = document.getElementById('titulo').value;
     const email = document.getElementById('email').value;
 
@@ -20,19 +20,50 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
         const result = await response.json();
 
         if (response.ok && result.success) {
-            // 🚀 Redireciona automaticamente para a página de usuários
-            window.location.href = "/usuarios";
+            window.location.href = result.redirect || "/login";
         } else {
             document.getElementById("mensagem").textContent = result.error || "Erro ao cadastrar.";
+            document.getElementById("mensagem").classList.add("error");
         }
     } catch (error) {
         document.getElementById("mensagem").textContent = "Erro na conexão com o servidor.";
+        document.getElementById("mensagem").classList.add("error");
     }
 });
 
-// --- LISTAR USUÁRIOS E NOTAS ---
+// --- LOGIN DE USUÁRIO ---
+document.getElementById('loginForm')?.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+
+    try {
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, senha })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            window.location.href = result.redirect || "/home";
+        } else {
+            document.getElementById("mensagem").textContent = result.error || "Falha no login.";
+            document.getElementById("mensagem").classList.add("error");
+        }
+    } catch (err) {
+        document.getElementById("mensagem").textContent = "Erro na conexão.";
+        document.getElementById("mensagem").classList.add("error");
+    }
+});
+
+// --- LISTAR USUÁRIOS ---
 async function carregarUsuarios() {
     const container = document.getElementById("usuarios-container");
+    if (!container) return;
+
     container.innerHTML = "<p>Carregando...</p>";
 
     try {
@@ -72,10 +103,10 @@ function mostrarUsuarios(usuarios) {
     `;
 
     usuarios.forEach(u => {
-        let notasHtml = u.notas.map(n => `
-            <p><strong>${n.titulo}</strong>: ${n.conteudo} 
-            <br><small>(${n.criado_em})</small></p>
-        `).join("");
+        const notasHtml = u.notas.map(n => 
+            `<p><strong>${n.titulo}</strong>: ${n.conteudo} 
+            <br><small>(${n.criado_em})</small></p>`
+        ).join("");
 
         html += `
             <tr>
@@ -83,14 +114,13 @@ function mostrarUsuarios(usuarios) {
                 <td>${u.usuario}</td>
                 <td>${u.email}</td>
                 <td>${u.criado_em}</td>
-                <td>${notasHtml}</td>
+                <td>${notasHtml || "Nenhuma nota"}</td>
             </tr>
         `;
     });
 
-    html += "</tbody></table>";
+    html += `</tbody></table>`;
     container.innerHTML = html;
 }
 
-// --- Executa ao carregar a página ---
 document.addEventListener("DOMContentLoaded", carregarUsuarios);
