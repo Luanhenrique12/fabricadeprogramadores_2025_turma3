@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remover Usuário</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Faculdade Exemplo</h1>
+    <nav>
+      <a href="/home">Home</a>
+      <a href="/usuarios">Usuários</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Remover Usuário</h2>
+    <form id="removerForm">
+      <label for="usuarioId">ID do usuário:</label>
+      <input type="number" id="usuarioId" name="usuarioId" required min="1" />
+
+      <button type="submit">Remover</button>
+      <button type="button" class="secondary" id="limpar">Limpar</button>
+    </form>
+    <div id="resultado"></div>
+  </main>
+
+  <footer>© 2025 Faculdade Exemplo</footer>
+
+  <script>
+    const form = document.getElementById('removerForm');
+    const resultado = document.getElementById('resultado');
+    const limpar = document.getElementById('limpar');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('usuarioId').value;
+      if (!confirm(`Remover usuário ID ${id}?`)) return;
+
+      try {
+        const resp = await fetch(`/remover/usuario/${encodeURIComponent(id)}`, { method: 'POST' });
+        const data = await resp.json();
+        resultado.style.color = resp.ok ? 'green' : 'red';
+        resultado.textContent = data.message || data.error || 'Erro.';
+      } catch {
+        resultado.style.color = 'red';
+        resultado.textContent = 'Erro de conexão.';
+      }
+    });
+
+    limpar.addEventListener('click', () => {
+      document.getElementById('usuarioId').value = '';
+      resultado.textContent = '';
+    });
+  </script>
+</body>
+</html>

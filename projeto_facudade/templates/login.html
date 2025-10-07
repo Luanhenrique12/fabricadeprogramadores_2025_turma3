@@ -3,30 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faculdade Exemplo - Login</title>
+  <title>Login - Faculdade Exemplo</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <main class="container">
-    <h1>Login</h1>
-    <p>Entre com seu e-mail e senha.</p>
+  <header>
+    <h1>Faculdade Exemplo</h1>
+    <nav>
+      <a href="/">Cadastro</a>
+    </nav>
+  </header>
 
+  <main class="container">
+    <h2>Entrar</h2>
     <form id="loginForm">
       <label for="email">E-mail:</label>
-      <input type="text" id="email" name="email" required>
+      <input type="email" id="email" required>
 
       <label for="senha">Senha:</label>
-      <input type="password" id="senha" name="senha" required>
+      <input type="password" id="senha" required>
 
       <button type="submit">Entrar</button>
+      <button type="button" class="secondary" onclick="window.location.href='/'">Voltar</button>
     </form>
-
     <div id="mensagem"></div>
-
-    <p style="margin-top: 20px;">Ainda não possui conta?</p>
-    <button onclick="window.location.href='/'">Não tenho conta</button>
   </main>
 
-  <script src="/static/js/script.js"></script>
+  <footer>© 2025 Faculdade Exemplo</footer>
 </body>
 </html>
