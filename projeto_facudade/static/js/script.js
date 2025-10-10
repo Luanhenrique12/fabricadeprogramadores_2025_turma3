@@ -31,7 +31,7 @@ document.getElementById('cadastroForm')?.addEventListener('submit', async functi
     }
 });
 
-// --- LOGIN DE USUÁRIO ---
+
 document.getElementById('loginForm')?.addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -59,7 +59,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async function 
     }
 });
 
-// --- LISTAR USUÁRIOS ---
+
 async function carregarUsuarios() {
     const container = document.getElementById("usuarios-container");
     if (!container) return;
